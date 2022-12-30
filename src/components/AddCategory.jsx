@@ -1,34 +1,29 @@
 import { useState } from 'react'
 
-const AddCategory = ({onNewCategory}) => {
+const AddCategory = ({ onNewCategory }) => {
 
-    const [inputCategories, setInputCategories] = useState(' ')
+    const [inputCategories, setInputCategories] = useState('')
+
+    const onSubmit = (event) => {
+        event.preventDefault()
+        if (inputCategories.trim().length <= 0) return;
+        onNewCategory(inputCategories.trim());
+        setInputCategories('')
+    }
 
     const onImputChange = ({ target }) => {
         setInputCategories(target.value)
 
     }
 
-
-
-   const onSubmit = (event) =>{
-    event.preventDefault()
-    if(inputCategories.trim().length <= 1) return;
-
-    onNewCategory(inputCategories.trim());
- setInputCategories('')
-
-   }
-
-
     return (
         <>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={ onSubmit }>
                 <input
                     type="text"
                     placeholder="Buscar Gifts"
-                    value={inputCategories}
-                    onChange={(event) => { onImputChange(event) }}
+                    value={ inputCategories }
+                    onChange={ onImputChange }
                 />
             </form>
         </>

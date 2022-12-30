@@ -7,10 +7,9 @@ const GifExpertApp = () => {
 const [categories, setCategories] = useState([''])
 
 const onAddCategory = (newCategory)=> {
-
  setCategories([newCategory,...categories])
-
 }
+
 
   return (
 <> 
